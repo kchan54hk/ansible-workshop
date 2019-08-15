@@ -14,7 +14,7 @@
       firewalld:
         service: http
         permanent: true
-        state: absent
+        state: disabled
         immediate: yes
   - block:
     - name: Remove html page
