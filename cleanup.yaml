@@ -1,0 +1,23 @@
+---
+- name: Clean up workshop
+  hosts: web
+  become: no
+  gather_facts: no
+  tasks:
+  - block:
+    - name: Remove httpd 
+      yum:
+        name: httpd
+        state: absent
+  - block:
+    - name: Revoke firewall permits http services
+      firewalld:
+        service: http
+        permanent: true
+        state: absent
+        immediate: yes
+  - block:
+    - name: Remove html page
+      file:
+        state: absent
+        path: /var/www/html/index.html
