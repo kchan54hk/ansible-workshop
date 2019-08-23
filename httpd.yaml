@@ -1,8 +1,8 @@
 ---
 - name: apache services
   hosts: web
-  become: yes
-  gather_facts: yes
+  become: no
+  gather_facts: no
   tasks:
   - block:
     - name: latest httpd version installed
